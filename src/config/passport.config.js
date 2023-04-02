@@ -11,6 +11,8 @@ const LocalStrategy = local.Strategy;
 
 const initializeStrategies = () => {
     passport.use('login', new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
+        if(email === config.superAdmin.SUPER_ADMIN_EMAIL && passport === config.superAdmin.SUPER_ADMIN_PWD) 
+        return done(null, {_id: 0, first_name: "Admin", role: "admin"})
         if (!email || !password) return done(null, false, { message: "Valores incompletos" })
         const user = await usersService.getBy({ email });
         if (!user) return done(null, false, { message: "Credenciales inválidas" })

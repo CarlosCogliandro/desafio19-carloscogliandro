@@ -7,9 +7,9 @@ const router = Router();
 
 // ------------------------------------------------
 
-router.get('/productos', viewsController.productos);
+router.get('/productos', viewsController.productsGetAll);
 
-router.post('/productos', viewsController.productosSave);
+router.post('/productos', viewsController.productsSave);
 
 // ------------------------------------------------
 

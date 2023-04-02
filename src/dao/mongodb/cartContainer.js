@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import ContenedorMongo from "./productsContainer";
+import ContenedorMongo from "./productsContainer.js";
 
 const cartSchema = new mongoose.Schema({
     products: [{type: Object, required: true}]

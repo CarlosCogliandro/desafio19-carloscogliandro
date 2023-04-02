@@ -11,17 +11,16 @@ const productsSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    thumbnail: {
+    image: {
         type: String,
         required: true
     },
     description: {
         type: String,
         required: true,
-        default: 'Alguna descripcion correcta del producto!'
     },
-    id: {
-        type: Number,
+    code: {
+        type: String,
         required: true,
         unique: true
     },
@@ -29,7 +28,7 @@ const productsSchema = new mongoose.Schema({
         type: Number,
         required: true
     }
-}, { versionKey: false });
+});
 
 const productsModel = mongoose.model(collection, productsSchema);
 

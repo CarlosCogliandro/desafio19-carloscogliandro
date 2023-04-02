@@ -35,5 +35,9 @@ export default {
     nodemailer: {
         GMAIL_USER: process.env.GMAIL_USER,
         GMAIL_PWD: process.env.GMAIL_PWD
+    },
+    superAdmin: {
+        SUPER_ADMIN_EMAIL: process.env.SUPER_ADMIN_EMAIL,
+        SUPER_ADMIN_PWD: process.env.SUPER_ADMIN_PWD
     }
 }

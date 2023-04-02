@@ -1,17 +1,28 @@
 import { productsService } from "../dao/index.js";
 
-const productosGetAll = async (req, res) => {
+
+const productsGetAll = async (req, res) => {
     const prod = await productsService.getAll();
     res.render('productos', { prod })
 };
 
-const productosSave = async (req, res) => {
-    let prod = req.body
-    await productsService.save(prod)
-    res.redirect('/home')
+const productsSave = async (req, res) => {
+    const file = req.file;
+    const { title, price, description, code, stock } = req.body;
+    if (!title || !price || !description || !code || !stock) return res.status(400).send({ status: "error", error: "Valores incompletos" });
+    const product = {
+        title,
+        price,
+        description,
+        code,
+        stock,
+        image: `${req.protocol}//${req.hostname}:${process.env.PORT}/img/${file.filename}`
+    };
+    const result = await productsService.create(product);
+    res.send({ status: "success", payload: result})
 };
 
 export default {
-    productosGetAll,
-    productosSave
+    productsGetAll,
+    productsSave
 }

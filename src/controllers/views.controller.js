@@ -1,17 +1,19 @@
 
 import { productsService } from "../dao/index.js";
+import productsModel from '../models/product.model.js'
 
 
-const productos = async (req, res) => {
-    const prod = productsService.getAll();
-    res.render('productos', { prod })
+const productsGetAll = async (req, res) => {
+    const products = await productsModel.find().lean();
+    console.log(products);
+    res.render('productos', { products });
+}
+
+const productsSave = (req, res) => {
+    res.render('formulario')
 };
 
-const productosSave = async (req, res) => {
-    let prod = req.body
-    await productsService.save(prod)
-    res.redirect('/home')
-};
+// ------------------------------------------------------------------
 
 const login = (req, res) => {
     res.render('login');
@@ -21,7 +23,7 @@ const register = (req, res) => {
     res.render('register');
 };
 
-const profile =  (req, res) => {
+const profile = (req, res) => {
     res.render('profile', { user: req.session.user });
 };
 
@@ -54,12 +56,12 @@ const info = (req, res) => {
 };
 
 export default {
-    productos,
-    productosSave,
+    productsGetAll,
+    productsSave,
     login,
     register,
     profile,
-    home, 
+    home,
     chat,
     logOut,
     info
