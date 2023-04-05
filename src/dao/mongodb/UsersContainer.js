@@ -1,9 +1,9 @@
 import userModel from "../../models/User.model.js";
 
-export default class Users {
+export default class mongoUsers {
 
     get = () => {
-        return userModel.find();
+        return userModel.find()
     }
 
     getBy = (params) => {

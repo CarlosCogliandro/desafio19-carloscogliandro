@@ -1,11 +1,12 @@
 import passport from 'passport';
 import local from 'passport-local';
-import { usersService } from '../dao/index.js';
+import {usersService} from '../dao/index.js'
 import { validatePassword } from '../services/auth.js';
 import GitHubStrategy from 'passport-github2';
 import GoogleStrategy from 'passport-google-oidc';
 import config from './config.js';
 import mailing from '../services/mailing.js';
+// import userModel from '../models/User.model.js';
 
 const LocalStrategy = local.Strategy;
 
@@ -69,21 +70,21 @@ const initializeStrategies = () => {
         }
     }));
 
-    passport.use("signup", new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
+    passport.use("register", new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
         try {
             const User = await usersService.getBy({ email });
             if (User) {
                 console.log("User already exists");
                 return done(null, false);
             }
-            const { name, address, age, phone, avatar } = req.body;
+            const { name, /* address, age, phone, */  avatar } = req.body;
             const newUser = {
                 email,
                 password: password,
                 first_name: name,
-                address,
-                age,
-                phone,
+                // address,
+                // age,
+                // phone,
                 avatar,
             };
 

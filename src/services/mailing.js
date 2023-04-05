@@ -29,24 +29,15 @@ const sendEmail = async (to, subject, message, attachment) => {
 };
 
 const registerTable = userData => {
-  const { email, first_name, last_name, age, address, phone, avatar } = userData;
+  const { email, first_name, last_name, avatar } = userData;
   return `
     <h1>Nuevo usuario registrado</h1>
     </br>
-    <h3> Email: </h3> 
+    <h3>Email: </h3> 
     <p>${email}</p>
     </br>
-    <h3> Nombre y apellido: </h3>
+    <h3>Nombre y apellido:</h3>
     <p>${first_name} ${last_name}</p>
-    </br>
-    <h3> Edad: </h3>
-    <p>${age}</p>
-    </br>
-    <h3> Dirección: </h3>
-    <p> ${address}</p>
-    </br>
-    <h3>Teléfono:</h3>
-    <p>${phone}</p>
     </br>
     <h3>Avatar:</h3>
     <p>${avatar}</p>`

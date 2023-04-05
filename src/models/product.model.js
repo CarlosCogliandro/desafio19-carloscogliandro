@@ -11,10 +11,6 @@ const productsSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    image: {
-        type: String,
-        required: true
-    },
     description: {
         type: String,
         required: true,
@@ -27,9 +23,12 @@ const productsSchema = new mongoose.Schema({
     stock: {
         type: Number,
         required: true
-    }
+    },
+    image: {
+        type: String,
+    },
 });
 
-const productsModel = mongoose.model(collection, productsSchema);
+const productModel = mongoose.model(collection, productsSchema);
 
-export default productsModel;
+export default productModel;

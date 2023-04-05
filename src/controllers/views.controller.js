@@ -1,16 +1,15 @@
 
 import { productsService } from "../dao/index.js";
-import productsModel from '../models/product.model.js'
-
+// import productModel from "../models/product.model.js";
 
 const productsGetAll = async (req, res) => {
-    const products = await productsModel.find().lean();
+    const products = await productsService.getAll();
     console.log(products);
     res.render('productos', { products });
 }
 
 const productsSave = (req, res) => {
-    res.render('formulario')
+    res.render('home')
 };
 
 // ------------------------------------------------------------------

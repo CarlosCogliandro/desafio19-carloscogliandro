@@ -2,14 +2,6 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-// const mode = process.argv.slice(2)[0]
-
-// dotenv.config({
-//     path: mode === "PRODUCTION" ? './.env.production' : './.env.development'
-// });
-
-// console.log(process.env);
-
 export default {
     app: {
         PORT: process.env.PORT || 8080

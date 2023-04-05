@@ -1,7 +1,7 @@
 import { createHash, validatePassword } from "../services/auth.js";
 import jwt from "jsonwebtoken";
-import { usersService } from "../dao/index.js";
 import config from '../config/config.js';
+import { usersService } from "../dao/index.js"
 
 const register = async (req, res) => {
     const file = req.file;
@@ -11,7 +11,7 @@ const register = async (req, res) => {
     const exists = await usersService.getBy({ email });
     if (exists) return res.status(400).send({ status: "error", error: "El usuario ya existe" });
     const hashedPassword = await createHash(password);
-    const user = /*await usersService.save */ ({
+    const user = await usersService.save({
         first_name,
         last_name,
         // age,
@@ -22,6 +22,7 @@ const register = async (req, res) => {
         avatar: `${req.protocol}://${req.hostname}:${process.env.PORT}/img/${file.filename}`
     })
     const result = await usersService.create(user);
+    console.log(result);
     res.send({ status: "success", message: "Registrado" });
 };
 

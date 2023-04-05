@@ -16,20 +16,20 @@ const logger = winston.createLogger({
             level: "info"
         }),
         new winston.transports.File({
-            filename: 'error.log',
+            filename: 'src/services/loggers/error.log',
             level: 'error'
         }),
         new winston.transports.File({
-            filename: 'warning.log',
+            filename: 'src/services/loggers/warning.log',
             level: 'warning'
         })
     ]
 });
 
 export const levels = [
-    winston.info("127.0.0.1 - there's no place like home"),
-    logger.warning("127.0.0.1 - there's no place like home"),
-    logger.error("127.0.0.1 - there's no place like home"),
+    winston.info("Info valida..."),
+    logger.warning("Cuidado, Tenemos un problemita..."),
+    logger.error("Un error se ha detectado..."),
 ]
 
 export const addLoger = (req, res, next) => {

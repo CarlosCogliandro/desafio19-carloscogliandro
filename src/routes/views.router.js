@@ -8,8 +8,7 @@ const router = Router();
 // ------------------------------------------------
 
 router.get('/productos', viewsController.productsGetAll);
-
-router.post('/productos', viewsController.productsSave);
+router.get('/home', viewsController.productsSave);
 
 // ------------------------------------------------
 
@@ -20,8 +19,6 @@ router.get('/register', viewsController.register );
 router.get('/profile', executePolicies(["AUTHENTICATED"]), viewsController.profile);
 
 router.get('/home', viewsController.home);
-
-router.get('/chat', viewsController.chat);
 
 router.get('/logout', viewsController.logOut);
 

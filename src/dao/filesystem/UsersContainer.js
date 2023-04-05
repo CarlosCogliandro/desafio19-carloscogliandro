@@ -3,7 +3,7 @@ import __dirname from '../../utils.js';
 
 export default class Users {
     constructor() {
-        this.path = `${__dirname}/files/users.json`;
+        this.path = `${__dirname}/services/files/users.json`;
         this.init();
     };
 
